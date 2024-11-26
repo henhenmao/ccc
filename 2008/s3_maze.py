@@ -1,5 +1,6 @@
 
-
+# NOT SOLVED STILL DOES NOT GIVE FULL MARKS DUE TO TLE
+# DID NOT OPTIMIZE CASE OF 20x20 CROSS INTERSECTIONS
 
 def bfs(grid, rows, cols): # outputs min path
     

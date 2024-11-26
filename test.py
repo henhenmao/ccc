@@ -1,4 +1,6 @@
 
+# test file used for sanity checks when doing actual problems
+
 
 # nums = [1,2,3,4]
 # print(nums)
@@ -22,5 +24,7 @@
 # else:
 #     print("world")
 
-s = "234"
-print(s[-2:])
+# s = "234"
+# print(s[-2:])
+
+print(1 == 1.0)
