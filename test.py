@@ -27,4 +27,10 @@
 # s = "234"
 # print(s[-2:])
 
-print(1 == 1.0)
+
+
+directions = ((1,0), (0,1), (-1,0), (0,-1))
+for i in directions:
+    print(i)
+print(type(directions))
+print(directions)

@@ -28,7 +28,6 @@ def bfs(grid, rows, cols): # outputs min path
         if curr_x == rows-1 and curr_y == cols-1:
             return curr_distance
         
-        visited[curr_x][curr_y] = True
 
         if current_road == "*":
             continue
@@ -43,7 +42,8 @@ def bfs(grid, rows, cols): # outputs min path
             next_x = curr_x + dir[0]
             next_y = curr_y + dir[1]
             if valid_move(next_x, next_y) and not visited[next_x][next_y]:
-                queue.append((next_x, next_y, curr_distance+1)) 
+                visited[next_x][next_y] = True
+                queue.append((next_x, next_y, curr_distance+1))
     return -1
 
 test_cases = int(input())
