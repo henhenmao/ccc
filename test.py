@@ -29,8 +29,10 @@
 
 
 
-directions = ((1,0), (0,1), (-1,0), (0,-1))
-for i in directions:
-    print(i)
-print(type(directions))
-print(directions)
+# directions = ((1,0), (0,1), (-1,0), (0,-1))
+# for i in directions:
+#     print(i)
+# print(type(directions))
+# print(directions)
+
+print("A".isalpha())
