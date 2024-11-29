@@ -35,4 +35,10 @@
 # print(type(directions))
 # print(directions)
 
-print("A".isalpha())
+# print("A".isalpha())
+
+a = ""
+if a:
+    print("hello")
+else:
+    print("wkfopsekf")
