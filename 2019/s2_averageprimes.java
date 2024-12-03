@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class s2 {
+public class s2_averageprimes {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int n = 2000000;
