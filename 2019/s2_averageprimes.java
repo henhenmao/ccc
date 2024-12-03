@@ -35,5 +35,6 @@ public class s2_averageprimes {
                 }
             }
         }
+        scan.close();
     }
 }
