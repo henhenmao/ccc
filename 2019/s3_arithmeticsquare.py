@@ -22,7 +22,7 @@ get all of the inital square scenarios
         4 x x -> 4 (2+(4-1)) (3+(4-1)) -> 4 5 6
         x x x    x x x                    x x x
     
-do the same thing but for columns rotated 90 degrees or something
+do the same thing but for columns rotated 90 degrees or somethingx
 
 """
 
@@ -74,15 +74,17 @@ def countX(nums):
     return nums.count("X")
 def fillLine(line):
     xcount = line.count("X")
-    if xcount == 0:
-        pass
-    elif xcount == 1:
+    if xcount == 1:
+        # print("two check was performed")
         if line[2] == "X":
-            line[2] = line[1]+(line[1]-line[0])
+            # line[2] = line[1]+(line[1]-line[0])
+            line[2] = 2*line[1]-line[0]
         elif line[1] == "X":
-            line[1] = line[0]+((line[2]-line[0])/2)
+            # line[1] = line[0]+((line[2]-line[0])/2)
+            line[1] = (line[0] + line[2])/2
         elif line[0] == "X":
-            line[0] = line[1]-(line[2]-line[1])
+            # line[0] = line[1]-(line[2]-line[1])
+            line[0] = 2*line[1]-line[2]
     return line
 def matchLines():
     for i in range(3):
@@ -93,7 +95,10 @@ def matchLines():
                 rows[i][j] = cols[j][i]
             elif cols[j][i] == "X":
                 cols[j][i] = rows[i][j]
+            # if rows[i][j] != "X" and cols[j][i] != "X" and rows[i][j] != cols[j][i]:
+                # print("semthing is very veyr worng")
 def betterFill(filled, unfilled):
+    # print("betterfill was perfoemed")
     for i in range(3):
         if unfilled[i] != "X":
             diff = unfilled[i]-filled[i]
@@ -123,10 +128,12 @@ def doBetterFill():
 def emptyGridCheck():
     totalX = countX(rows[0]) + countX(rows[1]) + countX(rows[2])
     if totalX == 9:
+        # print("emptygridcheck was performed")
         rows[0] = [0, 0, 0]
         rows[1] = [0, 0, 0]
         rows[2] = [0, 0, 0]
     elif totalX == 8:
+        # print("one element found in empty grid")
         for i in rows:
             for j in i:
                 if j != "X":
@@ -142,6 +149,7 @@ def emptyCheck():
         elif countX(row) == 3: # all empty
             emptyCount += 1
     if emptyCount == 2 and fullRow != []:
+        # print("emptycheck was done fo rows")
         rows[0] = fullRow
         rows[1] = fullRow
         rows[2] = fullRow
@@ -154,6 +162,7 @@ def emptyCheck():
         elif countX(col) == 3: # all empty
             emptyCount += 1
     if emptyCount == 2 and fullCol != []:
+        # print("emptycheck was done for columns")
         cols[0] = fullCol
         cols[1] = fullCol
         cols[2] = fullCol
@@ -170,36 +179,24 @@ def twoCheck():
 def checkSequence(nums):
     return (nums[2]-nums[1]) == (nums[1]-nums[0])
 def threeCheck():
+    paths = ((0, 1), (1, 0), (1, 2), (2, 1))
     if countX(rows[0]) >= 2 and countX(rows[1]) >= 2 and countX(rows[2]) >= 2 and countX(cols[0]) >= 2 and countX(cols[1]) >= 2 and countX(cols[2]) >= 2:
-        tempRow = []
-        tempCol = []
-        for row in range(3):
-            if countX(rows[row]) == 3:
-                continue
-            for i in range(3):
-                if rows[row][i] != "X":
-                    tempRow.append(rows[row][i])
-                    break
-        for col in range(3):
-            if countX(cols[col]) == 3:
-                continue
-            for i in range(3):
-                if cols[col][i] != "X":
-                    # rows[row] = [rows[row][i]]*3
-                    tempCol.append(cols[col][i])
-                    break
-        if checkSequence(tempRow):
-            for row in range(3):
-                rows[row] = [tempRow[row]] * 3
+        if (rows[0][0] != "X" and rows[2][2] != "X") or (rows[2][0] != "X" and rows[0][2] != "X"):
+            rows[0][1] = rows[1][1]
         else:
-            for col in range(3):
-                cols[col] = [tempCol[col]] * 3
+            for path in paths:
+                if rows[path[0]][path[1]] != "X":
+                    rows[1][1] = rows[path[0]][path[1]]
+                    break
+
+
+
+
 def sevenCheck():
     totalX = countX(rows[0]) + countX(rows[1]) + countX(rows[2])
     if totalX == 7:
-        one = countX(rows[0]) == 2
+        # print("sevencheck was used")
         two = countX(rows[1]) == 2
-        three = countX(rows[2]) == 2
         if two == False:
             for col in range(3):
                 if countX(cols[col]) == 3:
@@ -217,39 +214,59 @@ def sevenCheck():
                         rows[row] = [rows[row][i]]*3
                         break
 
-
 getGrid()
 
-# solves a 2x2 grid
-twoCheck()
+emptyGridCheck()
 matchLines()
 
 sevenCheck()
 matchLines()
 
-emptyGridCheck()
+twoCheck()
 matchLines()
-
-emptyCheck()
-matchLines()
-
 
 threeCheck()
 matchLines()
 
-
-twoCheck()
-matchLines()
-
-# solves a grid that has no 2x2 grid but one full row and adjacent item
 doBetterFill()
 matchLines()
-
 doBetterFill()
 matchLines()
 
 twoCheck()
 matchLines()
+
+# emptyGridCheck()
+# matchLines()
+
+# # solves a 2x2 grid
+# twoCheck()
+# matchLines()
+
+# sevenCheck()
+# matchLines()
+
+
+
+# emptyCheck()
+# matchLines()
+
+
+# threeCheck()
+# matchLines()
+
+# twoCheck()
+# matchLines()
+
+# # solves a grid that has no 2x2 grid but one full row and adjacent item
+# doBetterFill()
+# matchLines()
+
+# doBetterFill()
+# matchLines()
+
+# twoCheck()
+# matchLines()
 
 # print()
 # print("-=Rows=-")
