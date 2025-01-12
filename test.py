@@ -1,3 +1,3 @@
-
-a = int(input())
-print(f"{a} is the numebr inputed")
+a = [1,2]
+print(a)
+print(*a)
