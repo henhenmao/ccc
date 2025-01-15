@@ -53,9 +53,9 @@ def minimalCoverage():
 
     print(count)
     for s in segment_output:
-        print(*s)
-
-
+        print(*s, end="")
+    if n < t-1:
+        print()
 
 
 t = int(input())
@@ -63,5 +63,6 @@ a = input()
 for n in range(t):
     minimalCoverage()
     if n < t-1:
-        print()
         a = input()
+
+    

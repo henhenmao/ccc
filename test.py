@@ -1,3 +1,4 @@
-a = [1,2]
-print(a)
-print(*a)
+
+
+print("hello")
+print("world")
