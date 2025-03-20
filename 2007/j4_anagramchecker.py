@@ -1,0 +1,1 @@
+print("Is an anagram.") if (sorted("".join(input().split(" "))) == sorted("".join(input().split(" ")))) else print("Is not an anagram.")
